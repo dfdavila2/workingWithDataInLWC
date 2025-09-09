@@ -10,20 +10,31 @@
  * - Displays contacts in a sortable data table
  * - Shows FirstName, LastName, and Email fields
  * - Uses wire service for efficient data loading
- * - Includes error handling and loading states
+ * - Includes comprehensive error handling with reduceErrors utility
+ * - Loading states and empty state management
+ * - Toast notifications for user feedback
+ * 
+ * Error Handling:
+ * - Integrates with ldsUtils.reduceErrors for standardized error formatting
+ * - Displays formatted error messages in the UI
+ * - Provides fallback error handling for various error types
  * 
  * @author Salesforce Developer
- * @version 1.0
+ * @version 1.1
  * @since 2024
  */
 
+// Lightning Web Component framework imports
 import { LightningElement, wire } from 'lwc';
+
+// Platform services for user notifications
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+
+// Apex method import for data retrieval
 import getContacts from '@salesforce/apex/ContactController.getContacts';
 
-import FIRST_NAME from'@salesforce/schema/Contact.FirstName';
-import LAST_NAME from '@salesforce/schema/Contact.LastName';
-import CONTACT_EMAIL from '@salesforce/schema/Contact.Email';
+// Utility function for error handling and formatting
+import { reduceErrors } from 'c/ldsUtils';
 
 
 /**
@@ -76,6 +87,31 @@ export default class ContactList extends LightningElement {
      * Populated when the wire service encounters an error
      */
     error;
+
+    /**
+     * Getter for formatted error messages
+     * 
+     * This getter uses the reduceErrors utility function from the ldsUtils module
+     * to format various types of LDS (Lightning Data Service) errors into readable
+     * error messages. It handles different error formats including:
+     * - UI API read errors
+     * - Page level errors
+     * - Field level errors
+     * - DML, Apex and network errors
+     * - JavaScript errors
+     * 
+     * The getter returns an empty array when no errors are present, ensuring
+     * the template can safely iterate over the errors array.
+     * 
+     * @returns {Array} Array of formatted, user-friendly error messages
+     * @example
+     * // In template: <template for:each={errors} for:item="errorMsg">
+     * //   <div key={errorMsg}>{errorMsg}</div>
+     * // </template>
+     */
+    get errors() {
+        return this.error ? reduceErrors(this.error) : [];
+    }
 
     /**
      * Wire service method to retrieve contacts from the ContactController

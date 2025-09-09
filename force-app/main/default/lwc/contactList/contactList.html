@@ -100,7 +100,10 @@
                     </div>
                 </template>
             </template>
-            
+
+            <template if:true={errors}>
+                <p>{errors}</p>
+            </template>
         </div>
     </lightning-card>
 </template>
