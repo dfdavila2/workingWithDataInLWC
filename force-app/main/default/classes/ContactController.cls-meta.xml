@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ContactController Apex Class Metadata Configuration
+    
+    This file defines the metadata for the ContactController Apex class,
+    including its API version and deployment settings.
+    
+    The class provides server-side methods for Contact data access
+    and is designed to work with Lightning Web Components.
+-->
+<ApexClass xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- 
+        API Version
+        Specifies the Salesforce API version this Apex class is built against.
+        Version 58.0 provides access to the latest Apex features and security enhancements.
+    -->
+    <apiVersion>58.0</apiVersion>
+    
+    <!-- 
+        Class Status
+        Indicates that this class is active and can be used in the org.
+        Set to 'Active' to enable the class for use in Lightning Web Components.
+    -->
+    <status>Active</status>
+</ApexClass>

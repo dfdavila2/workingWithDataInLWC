@@ -1,0 +1,106 @@
+<!--
+    ContactList Lightning Web Component Template
+    
+    This template displays a list of Contact records in a data table format
+    using the lightning-datatable component. It includes loading states,
+    error handling, and responsive design elements.
+    
+    Features:
+    - Lightning card container for consistent UI
+    - Data table with sorting capabilities
+    - Loading spinner during data retrieval
+    - Error message display for failed requests
+    - Empty state message when no contacts are found
+-->
+<template>
+    <!-- 
+        Lightning Card Container
+        Provides a clean, bordered container with title and contact list icon
+    -->
+    <lightning-card title="Contact List" icon-name="standard:contact">
+        <!-- 
+            Card Body with SLDS Padding
+            Uses Salesforce Lightning Design System spacing utilities
+        -->
+        <div class="slds-p-around_medium">
+            
+            <!-- 
+                Loading State
+                Displays a spinner while data is being retrieved from the server
+            -->
+            <template if:true={isLoading}>
+                <div class="slds-is-relative slds-p-around_large">
+                    <lightning-spinner 
+                        alternative-text="Loading contacts..." 
+                        size="medium">
+                    </lightning-spinner>
+                </div>
+            </template>
+            
+            <!-- 
+                Error State
+                Displays an error message when data retrieval fails
+            -->
+            <template if:true={error}>
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small">
+                        <lightning-icon 
+                            icon-name="utility:error" 
+                            size="x-small" 
+                            alternative-text="Error">
+                        </lightning-icon>
+                    </span>
+                    <h2>Unable to load contacts</h2>
+                    <p>Please check your permissions and try again.</p>
+                </div>
+            </template>
+            
+            <!-- 
+                Data Table State
+                Displays the contact data in a sortable table when data is available
+            -->
+            <template if:false={isLoading}>
+                <template if:true={contacts}>
+                    <!-- 
+                        Lightning Data Table
+                        Displays contact records in a sortable, interactive table
+                        
+                        Properties:
+                        - data: Array of contact records to display
+                        - columns: Column definitions for the table structure
+                        - key-field: Unique identifier for each row (Contact Id)
+                        - hide-checkbox-column: Hides the selection checkbox column
+                        - show-row-number-column: Shows row numbers for easy reference
+                    -->
+                    <lightning-datatable
+                        data={contacts}
+                        columns={columns}
+                        key-field="Id"
+                        hide-checkbox-column="true"
+                        show-row-number-column="true">
+                    </lightning-datatable>
+                </template>
+                
+                <!-- 
+                    Empty State
+                    Displays a message when no contacts are found
+                -->
+                <template if:false={contacts}>
+                    <div class="slds-text-align_center slds-p-around_large">
+                        <lightning-icon 
+                            icon-name="standard:contact" 
+                            size="large" 
+                            alternative-text="No contacts">
+                        </lightning-icon>
+                        <h3 class="slds-text-heading_medium slds-m-top_medium">No Contacts Found</h3>
+                        <p class="slds-text-body_regular slds-m-top_small">
+                            There are no contacts to display at this time.
+                        </p>
+                    </div>
+                </template>
+            </template>
+            
+        </div>
+    </lightning-card>
+</template>

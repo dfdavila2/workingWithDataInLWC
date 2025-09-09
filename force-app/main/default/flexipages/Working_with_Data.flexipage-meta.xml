@@ -3,18 +3,19 @@
     Working with Data FlexiPage Metadata Configuration
     
     This FlexiPage creates a custom Lightning App page titled "Working with Data"
-    that showcases the ContactCreator Lightning Web Component. The page is designed
-    to demonstrate data manipulation capabilities within the Salesforce platform.
+    that showcases both ContactCreator and ContactList Lightning Web Components. 
+    The page is designed to demonstrate comprehensive data manipulation capabilities 
+    within the Salesforce platform.
     
     Page Structure:
     - Uses the defaultAppHomeTemplate for consistent layout
-    - Contains a single main region with the contactCreator component
-    - Provides a dedicated space for testing contact creation functionality
+    - Contains a single main region with both contactCreator and contactList components
+    - Provides a complete contact management interface with create and view functionality
     
     Purpose:
-    This page serves as a demonstration environment for the ContactCreator component,
-    allowing users to test the contact creation functionality with the specified
-    test data (Lisa Jones, ljones@developer.com).
+    This page serves as a demonstration environment for contact management,
+    allowing users to create new contacts and view existing contacts in a table format.
+    Perfect for testing the complete contact workflow with the specified test data.
 -->
 <FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
     <!-- 
@@ -40,6 +41,20 @@
             <componentInstance>
                 <componentName>contactCreator</componentName>
                 <identifier>contactCreator</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <!-- 
+                ContactList Component Instance
+                Places the ContactList Lightning Web Component on this page.
+                
+                Properties:
+                - componentName: References the contactList component
+                - identifier: Unique identifier for this component instance
+            -->
+            <componentInstance>
+                <componentName>contactList</componentName>
+                <identifier>contactList</identifier>
             </componentInstance>
         </itemInstances>
         
