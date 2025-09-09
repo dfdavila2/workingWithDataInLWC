@@ -1,0 +1,40 @@
+<!--
+    ContactCreator Lightning Web Component Template
+    
+    This template provides the UI for creating new Contact records.
+    It uses lightning-record-form to automatically generate a form
+    with the specified Contact fields (FirstName, LastName, Email).
+    
+    Features:
+    - Wrapped in a lightning-card for better visual presentation
+    - Uses SLDS padding classes for consistent spacing
+    - Handles success events to show toast notifications
+-->
+<template>
+    <!-- 
+        Lightning Card Container
+        Provides a clean, bordered container with title and contact icon
+    -->
+    <lightning-card title="Create Contact" icon-name="standard:contact">
+        <!-- 
+            Content Area with SLDS Padding
+            Uses Salesforce Lightning Design System spacing utilities
+        -->
+        <div class="slds-p-around_medium">
+            <!-- 
+                Lightning Record Form
+                Automatically generates a form for creating Contact records
+                
+                Properties:
+                - object-api-name: Binds to the Contact object API name
+                - fields: Array of field API names to display in the form
+                - onsuccess: Event handler for successful record creation
+            -->
+            <lightning-record-form
+                object-api-name={objectApiName}
+                fields={fields}
+                onsuccess={handleSuccess}>
+            </lightning-record-form>
+        </div>
+    </lightning-card>
+</template>

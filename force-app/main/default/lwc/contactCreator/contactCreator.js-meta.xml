@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ContactCreator Lightning Web Component Metadata Configuration
+    
+    This file defines the metadata for the ContactCreator component,
+    including its API version, exposure settings, and deployment targets.
+    
+    The component is configured to be available on:
+    - Lightning App Pages (for custom applications)
+    - Lightning Record Pages (for object detail pages)
+    - Lightning Home Pages (for dashboard/home page layouts)
+-->
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- 
+        API Version
+        Specifies the Salesforce API version this component is built against.
+        Version 58.0 provides access to the latest Lightning Web Component features.
+    -->
+    <apiVersion>58.0</apiVersion>
+    
+    <!-- 
+        Component Exposure
+        Set to true to make this component available in the Lightning App Builder
+        and other Lightning page builders for drag-and-drop functionality.
+    -->
+    <isExposed>true</isExposed>
+    
+    <!-- 
+        Deployment Targets
+        Defines where this component can be used within the Salesforce platform.
+        Each target represents a different type of Lightning page.
+    -->
+    <targets>
+        <!-- 
+            Lightning App Page Target
+            Allows the component to be used on custom Lightning App pages
+            created through the Lightning App Builder.
+        -->
+        <target>lightning__AppPage</target>
+        
+        <!-- 
+            Lightning Record Page Target
+            Allows the component to be used on standard and custom object
+            record detail pages for creating related records.
+        -->
+        <target>lightning__RecordPage</target>
+        
+        <!-- 
+            Lightning Home Page Target
+            Allows the component to be used on Lightning Home pages
+            and dashboard layouts for quick contact creation.
+        -->
+        <target>lightning__HomePage</target>
+    </targets>
+</LightningComponentBundle>

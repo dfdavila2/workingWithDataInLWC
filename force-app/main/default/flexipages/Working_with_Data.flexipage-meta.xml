@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Working with Data FlexiPage Metadata Configuration
+    
+    This FlexiPage creates a custom Lightning App page titled "Working with Data"
+    that showcases the ContactCreator Lightning Web Component. The page is designed
+    to demonstrate data manipulation capabilities within the Salesforce platform.
+    
+    Page Structure:
+    - Uses the defaultAppHomeTemplate for consistent layout
+    - Contains a single main region with the contactCreator component
+    - Provides a dedicated space for testing contact creation functionality
+    
+    Purpose:
+    This page serves as a demonstration environment for the ContactCreator component,
+    allowing users to test the contact creation functionality with the specified
+    test data (Lisa Jones, ljones@developer.com).
+-->
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- 
+        FlexiPage Regions
+        Defines the layout structure and component placement for the page.
+        Each region can contain multiple component instances.
+    -->
+    <flexiPageRegions>
+        <!-- 
+            Component Instances
+            Defines the components that will be displayed on this page.
+            Each component instance can have properties and identifiers.
+        -->
+        <itemInstances>
+            <!-- 
+                ContactCreator Component Instance
+                Places the ContactCreator Lightning Web Component on this page.
+                
+                Properties:
+                - componentName: References the contactCreator component
+                - identifier: Unique identifier for this component instance
+            -->
+            <componentInstance>
+                <componentName>contactCreator</componentName>
+                <identifier>contactCreator</identifier>
+            </componentInstance>
+        </itemInstances>
+        
+        <!-- 
+            Region Configuration
+            Defines the region name and type for component placement.
+        -->
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    
+    <!-- 
+        Page Label
+        The display name for this FlexiPage as it appears in the Salesforce UI.
+    -->
+    <masterLabel>Working with Data</masterLabel>
+    
+    <!-- 
+        Page Template
+        Specifies the layout template to use for this FlexiPage.
+        The defaultAppHomeTemplate provides a standard app page layout.
+    -->
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    
+    <!-- 
+        Page Type
+        Defines this as an AppPage, which can be used in Lightning applications
+        and accessed through the App Launcher or navigation menus.
+    -->
+    <type>AppPage</type>
+</FlexiPage>
